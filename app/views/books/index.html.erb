@@ -5,7 +5,7 @@
 
 <h2>User info</h2>
 <table class='table'>
- <%#= image_tag @user.get_profile_image(100,100) %>
+ <%= image_tag @user.get_profile_image %>  <%#(100,100)%>
 <!--active strageをモデルに追加後-->
   <tr>
 	  <th>name</th>
@@ -23,7 +23,8 @@
     <% end %>
     </div>
       <h2 class="mt-3">New book</h2>
-      <%= form_with model: @book, method: :post do |f| %>
+      <%= form_with model: @book, method: :post do |f| %> <%#本来であればURL(ここでは新規投稿で自動的にcreateに飛ぶのでそのurl)とmethodを入力%>
+
       <!--<form action="/books" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="TDOCKxkL2fJ4UoubxTITGNtCC6kd8Z-fTxFsGeChG2WI3MtzTq7JVBjihJpPLz2MKx_9m4nYpOrMbZ0cWxRdlA" autocomplete="off" />-->
   <div class="form-group">
     <label for="book_title">Title</label>
@@ -38,6 +39,45 @@
     <!--<input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book" />-->
   </div>
   <% end %>
-  </div>
+</div>
+
+ <div class='col-md-8 offset-md-1'>
+      <h2>Books</h2>
+      <table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+      <!--<tr>-->
+      <!--<th>Title</th>-->
+      <!--<span><%#= book.title %></span>-->
+      <!--<th>Opinion</th>-->
+      <!--<span><%#= book.body %></span>-->
+      <!--</tr>-->
+  </thead>
+  
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <!--<a href="/users/41639">-->
+          <%= link_to user_path(book.user.id) do %> <%#doとendで範囲を指定する（doとendの間がリンクになる%>
+          <%= image_tag book.user.get_profile_image %>
+          <% end %>
+          <!--<img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOVROQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--4ead1361a8770dbfa9e923d6015bc75319880d57/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVZWcFZRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--596aecbd1e45058af6bad2ccaa755120cd0daa59/default-image.jpg" />-->
+        </td>
+        <td><%= link_to book.title, book_path(book.id) %></td>
+        <td><%= book.body %></td>
+        
+         <!--<a class="book_31031" href="/books/31031">ワンピース</a>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+    </div>
   </div>
 </div>
