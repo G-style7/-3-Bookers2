@@ -1,44 +1,44 @@
  <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-3'>
-
-<h2>User info</h2>
-<table class='table'>
- <%= image_tag @user.get_profile_image(100,100) %>
+<%= render 'users/info', user: @user, book: @book %> 
+<!--<h2>User info</h2>-->
+<!--<table class='table'>-->
+<!-- <%#= image_tag @user.get_profile_image(100,100) %>-->
 <!--active strageをモデルに追加後-->
-  <tr>
-	  <th>name</th>
-	  <th><%= @user.name %></th>
-  </tr>
-  <tr>
-	  <th>introduction</th>
-	  <th><%= @user.introduction %></th>
-  </tr>
-</table>
+<!--  <tr>-->
+<!--	  <th>name</th>-->
+<!--	  <th><%#= @user.name %></th>-->
+<!--  </tr>-->
+<!--  <tr>-->
+<!--	  <th>introduction</th>-->
+<!--	  <th><%#= @user.introduction %></th>-->
+<!--  </tr>-->
+<!--</table>-->
 
-<div class='row'>
-  <%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block edit_user_41573" do %>
-    <i class="fas fa-user-cog"></i>
-    <% end %>
-    </div>
-      <h2 class="mt-3">New book</h2>
-      <%= form_with model: @book, method: :post do |f| %> <%#本来であればURL(ここでは新規投稿で自動的にcreateに飛ぶのでそのurl)とmethodを入力%>
+<!--<div class='row'>-->
+<!--  <%#= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block edit_user_41573" do %>-->
+<!--    <i class="fas fa-user-cog"></i>-->
+<!--    <%#end %>-->
+<!--    </div>-->
+<!--      <h2 class="mt-3">New book</h2>-->
+      <%#= form_with model: @book, method: :post do |f| %> <%#本来であればURL(ここでは新規投稿で自動的にcreateに飛ぶのでそのurl)とmethodを入力%>
 
       <!--<form action="/books" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="TDOCKxkL2fJ4UoubxTITGNtCC6kd8Z-fTxFsGeChG2WI3MtzTq7JVBjihJpPLz2MKx_9m4nYpOrMbZ0cWxRdlA" autocomplete="off" />-->
-  <div class="form-group">
-    <label for="book_title">Title</label>
-    <%= f.text_field :title, class: "form-control book_title" %>
-  </div>
-  <div class="form-group">
-    <label for="book_opinion">Opinion</label>
-    <%= f.text_area :body, class: "form-control book_body" %>
-  </div>
-  <div class="form-group">
-    <%= f.submit 'Create Book', class: "btn btn-success" %>
+<!--  <div class="form-group">-->
+<!--    <label for="book_title">Title</label>-->
+<!--    <%#= f.text_field :title, class: "form-control book_title" %>-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <label for="book_opinion">Opinion</label>-->
+<!--    <%#= f.text_area :body, class: "form-control book_body" %>-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--    <%#= f.submit 'Create Book', class: "btn btn-success" %>-->
     <!--<input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book" />-->
-  </div>
-  <% end %>
-</div>
+<!--  </div>-->
+<!--  <%# end %>-->
+<!--</div>-->
 
  <div class='col-md-8 offset-md-1'>
       <h2>Books</h2>

@@ -1,2 +1,19 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+   <%= render 'users/info', user: @user ,book: @book_new %> 
+   <%#= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>
+   
+    <div class='col-md-8 offset-md-1'>
+  		<h2>Book detail</h2>
+  		<table class='table'>
+  		  <%= image_tag 
+  		  <tr>
+          <td><a href="/users/41786">
+            <img src="https://bookers-level2.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBM25QQVE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--c69df7c628bba8c41addd72c8532449144921ebb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVdscGFRPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4a929dbc7794f3c4610ba9ba5402762ad9cd1a14/default-image.jpg" /><br>
+            aaa
+</a>          </td>
+          <td><a href="/books/31161">qwqw</a></td>
+          <td>wqwqw</td>
+            <td><a class="btn btn-sm btn-success edit_book_31161" href="/books/31161/edit">Edit</a></td>
+            <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_31161" rel="nofollow" data-method="delete" href="/books/31161">Destroy</a></td>
+        </tr>
+      </table>
+   
