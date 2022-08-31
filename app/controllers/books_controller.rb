@@ -6,9 +6,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to books_path # 2-10
 
+    if @book.save
+       redirect_to books_path # 2-10
+    else
+       render :new
+    end
   end
 
   def index
@@ -28,7 +31,7 @@ class BooksController < ApplicationController
   end
 
 
- private
+  private
   def book_params #privateメソッドの名前は、「モデル名_params」とすることが多い
     params.require(:book).permit(:title, :body) #bookはモデルのtitle.bodyカラムを承認
   end
