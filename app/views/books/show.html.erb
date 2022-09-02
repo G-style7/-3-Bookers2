@@ -1,10 +1,10 @@
-   <%= render 'users/info', user: @user ,book: @book_new %> 
+   <%= render 'users/info', user: @user ,book: @book_new %>
    <%#= render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>
-    
+
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
   		<table class='table'>
-  		 
+
   		  <tr>
           <td>
           <%= link_to user_path(@user.id) do %>
@@ -15,7 +15,7 @@
           <td>
           <%= link_to @book.title, book_path(@book.id) %>
           </td>
-          <td>wqwqw</td>
+          <td><%= @book.title %></td>
             <td>
               <% if @book.user == current_user %>
                <%= link_to "Edit",edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
@@ -30,4 +30,5 @@
         </tr>
       </table>
     </div>
- 
+   </div>
+   </div>

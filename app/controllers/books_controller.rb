@@ -1,16 +1,18 @@
 class BooksController < ApplicationController
-  def new
-   @books = Book.new
-  end
+  # def new
+  # @books = Book.new
+  # end
 
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
 
     if @book.save
+      # flash[:notice] = "投稿に成功しました。"
        redirect_to book_path(@book.id) # 2-10
     else
-       render :new
+      # flash.now[:danger] = "登録に失敗しました"
+       render :index
     end
   end
 
@@ -34,14 +36,15 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+
   end
-  
+
   def update
     book = Book.find(params[:id])
     book.update(book_params)
     redirect_to book_path(book.id)
   end
-  
+
   private
   def book_params #privateメソッドの名前は、「モデル名_params」とすることが多い
     params.require(:book).permit(:title, :body) #bookはモデルのtitle.bodyカラムを承認
