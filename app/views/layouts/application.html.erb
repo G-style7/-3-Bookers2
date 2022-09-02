@@ -45,7 +45,7 @@
       <% else %>
       <li>
        <!--<a class="nav-link text-light"href="/">-->
-       <%= link_to "/",class:"nav-link text-light" do %>
+       <%= link_to users_path ,class:"nav-link text-light" do %>
         <i class="fas fa-home"></i>Home
         <% end %>
       </li>
@@ -74,7 +74,10 @@
   </nav>
  </header>
  <body>
-  
+ 
+  <%= flash.each do |message_type, message| %>
+    <%= content_tag :div, message, class: message_type %>
+    <% end %>
  </body>
  
 <%= yield %>
@@ -90,6 +93,8 @@
    </footer>
   
 </html>
+
+
 
 
 
