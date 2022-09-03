@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
- before_action :authenticate_user!, except: [:root,:about]
- 
+ before_action :authenticate_user!, except: [:top,:about] #[]の中はアクション名
+
  before_action :configure_permitted_parameters, if: :devise_controller?
  # devise利用の機能（ユーザ登録、ログイン認証など）が使われる前にconfigure_permitted_parametersメソッドが実行されます
  #deviseではデフォルトでUserがログインする際にはメールアドレスとパスワードのみをストロングパラメーターで取得するようになっているため、その他も追加できるよう設定するため

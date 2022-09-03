@@ -23,7 +23,7 @@
      <ul class="navbar-nav ml-auto">
       <% if user_signed_in? %>
        <li>
-        <%= link_to new_user_path, class: "nav-link text-light" do %>
+        <%= link_to user_path(current_user) , class: "nav-link text-light" do %>
         <i class="fas fa-home"></i>Home
         <% end %>
        </li>
@@ -45,7 +45,7 @@
       <% else %>
       <li>
        <!--<a class="nav-link text-light"href="/">-->
-       <%= link_to users_path ,class:"nav-link text-light" do %>
+       <%= link_to root_path ,class:"nav-link text-light" do %>
         <i class="fas fa-home"></i>Home
         <% end %>
       </li>
@@ -74,13 +74,15 @@
   </nav>
  </header>
  <body>
- 
-  
+ <% if flash[:notice] %>
+     <!--<p id="notice">-->
+       <%= flash[:notice] %>
+     <!--</p>-->
+   <% end %>
+
  </body>
 
- <%= flash.each do |message_type, message| %>
-    <%= content_tag :div, message, class: message_type %>
-    <% end %>
+
 <%= yield %>
 
    <footer>
@@ -92,5 +94,5 @@
    </div>
   </div>
    </footer>
-  
+
 </html>
