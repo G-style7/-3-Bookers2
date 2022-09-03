@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
-  # def new
-  # @books = Book.new
-  # end
+  before_action :correct_user, only: [:edit, :update]
 
   def create
     @book = Book.new(book_params)
@@ -41,17 +39,24 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
+    @book = Book.find(params[:id])
 
-    if book.update(book_params)
+    if @book.update(book_params)
     redirect_to book_path(book.id)
     else
-    render :show
+    render :edit
     end
   end
 
   private
   def book_params #privateメソッドの名前は、「モデル名_params」とすることが多い
     params.require(:book).permit(:title, :body) #bookはモデルのtitle.bodyカラムを承認
+  end
+
+  def correct_user
+     @book = Book.find(params[:id])
+     @user = @book.user #⬆️の選んだ本をもってるUserであると定義
+     redirect_to(books_path) unless @user == current_user
+     #②で定義したuserと現在ログインしているuserが一致していなければ、一覧ページにリダイレクトされる
   end
 end
