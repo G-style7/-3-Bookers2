@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:update]
 
   def new
   end
@@ -11,18 +11,21 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = current_user
     @users = User.all
-    # @books = Book.find(params[:id])
   end
 
   def show
     @user = User.find(params[:id])
     @book_new = Book.new
-    # @book = Book.find(params[:id])
-    # @books = @book.user
+    @book = @user.books
   end
 
   def edit
     @user = User.find(params[:id])
+    if @user == current_user
+       render :edit
+    else
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
