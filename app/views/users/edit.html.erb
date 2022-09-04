@@ -5,13 +5,13 @@
   <h2>User info</h2>
 
   <div id="error_explanation">
-   <% if @user.errors.any? %>
-   <%= @user.errors.count %> error prohibited this obj from being saved:
-  <ul>
+    <% if @user.errors.any? %>
+    <%= @user.errors.count %> error prohibited this obj from being saved:
+   <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
-  </ul>
+   </ul>
    <% end %>
   </div>
 
